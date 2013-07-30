@@ -1,0 +1,18 @@
+
+Opin kesän alussa uuden korttipelin nimeltä Cuarenta, joka sattuu olemaan todella mukava kahden pelaajan peli. Esimerkkiaiheissa kun sattui olemaan muitankin korttipelejä, niin ajattelin tämän uuden pelin soveltuvan yhtä hyvin vaihtoehdoksi.
+
+AIHE: Cuarenta- korttipeli (yksinpelinä) [http://en.wikipedia.org/wiki/Cuarenta]
+
+Käyttäjän: pelaaja
+
+Toiminnot: 
+ - Aloita peli
+   - jaa pelaajille kädet
+   - valitse kortti kädestäsi
+   - pelaa kortti pöytään
+   - kerää haluamasi kortit pöydästä
+   - lopeta vuoro
+   - tarkista pisteet
+ - mahdollisesti 'kaksinpeli' 
+(- huijjaa = näe tietokoneen käsi. Salaisella komennolla tietenkin :).
+ 
