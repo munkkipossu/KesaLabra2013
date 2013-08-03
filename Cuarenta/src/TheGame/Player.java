@@ -1,4 +1,6 @@
 
+package TheGame;
+
 public class Player{
 
 	private String name;
@@ -10,7 +12,7 @@ public class Player{
 
 	public Player(String name){
 		this.name = name;
-		this.Hand = new Hand();
+		this.hand = new Hand();
 	}
 
 

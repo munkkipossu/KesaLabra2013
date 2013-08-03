@@ -1,19 +1,30 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package TheGame;
 
-/**
- *
- * @author tolaakso
- */
 public class TheGame {
 
-    /**
-     * @param args the command line arguments
-     */
+    private Player firstPlayer;
+    private Player secondPlayer;
+    private Deck deck;
+    private Table table;
+    
+
+    
+    
+    
+    
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        System.out.printf("I'm aliiiiiiive!!!\n");
+   /*     Tila ohjelma = new Tila();
+        System.out.println(ohjelma);
+        ohjelma.lisaaKappale();
+        System.out.println(ohjelma);
+
+	Kayttoliittyma aloitus = new Kayttoliittyma();
+        SwingUtilities.invokeLater(aloitus);
+*/
     }
 }

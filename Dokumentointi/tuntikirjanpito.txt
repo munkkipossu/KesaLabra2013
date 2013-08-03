@@ -1,2 +1,4 @@
 
-0.7 3h - Git repon luonti, peruskäytön kertaus, aiheen keksimenen, aihmäärittelyn kirjoitus, kahvitauko
+30.7 3h - Git repon luonti, peruskäytön kertaus, aiheen keksimenen, aihmäärittelyn kirjoitus, kahvitauko
+31.7 1h - Ensimmäinen karu luokkakaavio piirretty, sen mukaisia luokkia luotu
+3.8  2h - Pohdintaa luokkakaavioista, perusluokkien ohjelmointia, luin Junit testauksesta
