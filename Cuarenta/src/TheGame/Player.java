@@ -1,13 +1,18 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package TheGame;
 
-/**
- *
- * @author tolaakso
- */
-public class Player {
-    
+public class Player{
+
+	private String name;
+	private Hand hand;
+
+	public Player(){
+		this("dude");
+	}	
+
+	public Player(String name){
+		this.name = name;
+		this.Hand = new Hand();
+	}
+
+
+
 }
