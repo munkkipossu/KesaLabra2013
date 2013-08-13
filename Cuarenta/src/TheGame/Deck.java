@@ -28,14 +28,16 @@ public class Deck{
 	}
 
 	public void shuffle(){
-		this.newCards();    // the 'shuffling' is done in randomizing the deal, so shuffling just creates a full deck
+		this.newCards();    // the 'shuffling' is done in randomizing the deal, so shuffle just creates a full deck
 	}
 
 	public Card deal(){
-		int chosenCard = 1; // TO BE IMPLEMENTED: randomInt(1,this.cards.size());
-		Card chosen = this.cards.get(chosenCard);
-		this.cards.remove(chosenCard);
-		return chosen;
+            if(this.cards.size() == 0)
+                return null;
+            int chosenCard = 0; // TO BE IMPLEMENTED: randomInt(0,this.cards.size()-1);
+            Card dealtCard = this.cards.get(chosenCard);
+            this.cards.remove(chosenCard);
+            return dealtCard;
 	}
 
         private void newCards(){
@@ -43,7 +45,6 @@ public class Deck{
 
             for(Rank rank : Rank.values()){
                 for(Suit suit : Suit.values()){
-
                     this.cards.add(new Card(rank, suit));
                 }
             }

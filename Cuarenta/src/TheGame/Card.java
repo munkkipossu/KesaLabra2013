@@ -37,5 +37,9 @@ public class Card {
             return false;
     }
 
+    public String toString(){
+        return "" + this.getRank() + " of " + this.getSuit();
+    }
+    
 }
 

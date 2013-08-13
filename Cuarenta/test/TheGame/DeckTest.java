@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
  *
  * @author tolaakso
  */
+import java.util.ArrayList;
 public class DeckTest {
     
     public DeckTest() {
@@ -22,6 +23,7 @@ public class DeckTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        
     }
 
     @AfterClass
@@ -30,7 +32,6 @@ public class DeckTest {
     
     @Before
     public void setUp() {
-
     }
     
     @After
@@ -39,10 +40,52 @@ public class DeckTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test
-    public void allCardsDealt() {
+    @Test
+    public void fourtyCardsDealt() { 
         Deck deck = new Deck();         
-        Card card = new Card(Rank.KING,Suit.HEARTS);
+        Card card;    
+
+         for(int i=0; i<40; i++){
+            card=deck.deal();
+            assertTrue(card != null);
+        }
+    }
+    
+    @Test
+    public void moreThanFourtyIsNull(){
+        Deck deck = new Deck();         
+        Card card;    
+
+        for(int i=0; i<41; i++){
+            card=deck.deal();     
+            if(i==40)
+                assertTrue(card == null);
+        }
+    }
+         
+    @Test
+    public void sameCardNotDealt(){
+        Deck deck = new Deck();         
+        Card card;
+        ArrayList<Card> cardsDealt = new ArrayList<Card>();    
+
+        for(int i=0; i<40; i++){
+            card=deck.deal();     
+            assertFalse(cardsDealt.contains(card));
+            cardsDealt.add(card);
+        }            
+    }
+    
+    @Test
+    public void fortyCardsDealtAfterShuffle(){
+        Deck deck = new Deck();         
+        Card card;    
         
+        card = deck.deal();
+        deck.shuffle();
+        for(int i=0; i<40; i++){
+            card=deck.deal();
+            assertTrue(card != null);
+        }
     }
 }
