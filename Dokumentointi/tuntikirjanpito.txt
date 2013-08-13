@@ -2,3 +2,4 @@
 30.7 3h - Git repon luonti, peruskäytön kertaus, aiheen keksimenen, aihmäärittelyn kirjoitus, kahvitauko
 31.7 1h - Ensimmäinen karu luokkakaavio piirretty, sen mukaisia luokkia luotu
 3.8  2h - Pohdintaa luokkakaavioista, perusluokkien ohjelmointia, luin Junit testauksesta
+13.8 3h - Muutaman luokan lisäys, luokkien perusteet melko kunnossa. Seuraavaksi pelin logiikkaa ja käyttiksen toimintaa
