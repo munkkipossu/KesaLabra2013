@@ -13,14 +13,28 @@ import java.util.ArrayList;
 
 public class Hand {
     
-    private ArrayList<Card> hand;
+    private ArrayList<Card> cards;
     
     public Hand(){
-        this.hand = new ArrayList<Card>();
+        this.cards = new ArrayList<Card>();
     }
     
     public void addCard(Card card){
-        if(this.hand.size() < 6)
-            this.hand.add(card);
+        if(this.cards.size() < 6)
+            this.cards.add(card);
+    }
+    
+    public Card removeCard(int chosenCard){
+        if(this.numberOfCards() < chosenCard){
+            Card card = cards.get(chosenCard);
+            cards.remove(chosenCard);
+            return card;
+        }
+        else
+            return null;
+    }
+    
+    private int numberOfCards(){
+        return this.cards.size();
     }
 }

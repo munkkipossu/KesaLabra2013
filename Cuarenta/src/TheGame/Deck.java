@@ -16,10 +16,6 @@ import java.util.ArrayList;
 
 
 public class Deck{
-
-    /*
-     * What follows below is some quick coding for the concepts, not working code (sadly)s
-     */
     
 	private ArrayList<Card> cards;
 
@@ -31,7 +27,7 @@ public class Deck{
 		this.newCards();    // the 'shuffling' is done in randomizing the deal, so shuffle just creates a full deck
 	}
 
-	public Card deal(){
+	private Card deal(){
             if(this.cards.size() == 0)
                 return null;
             int chosenCard = 0; // TO BE IMPLEMENTED: randomInt(0,this.cards.size()-1);
@@ -50,4 +46,12 @@ public class Deck{
             }
 
         }
+        
+        public void dealPlayerFiveCards(Player player){
+            for(int i=0;i<5;i++){
+                player.receiveCard(this.deal());
+            }
+        }
+
+
 }
