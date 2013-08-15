@@ -88,4 +88,23 @@ public class DeckTest {
             assertTrue(card != null);
         }
     }
+    
+    @Test
+    public void checkDeckContains40Cards(){
+        Deck deck = new Deck();
+        
+        assertTrue(deck.cardsLeft() == 40);
+    }
+    
+    @Test
+    public void checkDealingCardsDecreasesCardsLeft(){
+        Deck deck = new Deck();
+        Card card;
+        
+        for(int i=0; i<10; i++){
+            card = deck.deal();
+        }
+        
+        assertTrue(deck.cardsLeft() == 30);
+    }
 }

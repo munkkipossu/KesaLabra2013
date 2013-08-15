@@ -1,6 +1,5 @@
 
 
-
 /*
  * The Deck should work as follows:
  *  -It contains 40 Cards:
@@ -8,7 +7,7 @@
  *  -It contains a function that deals one card randomly
  *      - the same card should not be dealt multiple times
  *      - the deck can ONLY deal the 40 cards it possesses
- *  -Shuffling of the deck returns again all 40 cards to its
+ *  -Shuffling of the deck returns again all 40 cards 
  */
 
 package TheGame;
@@ -27,7 +26,7 @@ public class Deck{
 		this.newCards();    // the 'shuffling' is done in randomizing the deal, so shuffle just creates a full deck
 	}
 
-	private Card deal(){
+	public Card deal(){
             if(this.cards.size() == 0)
                 return null;
             int chosenCard = 0; // TO BE IMPLEMENTED: randomInt(0,this.cards.size()-1);
@@ -47,11 +46,7 @@ public class Deck{
 
         }
         
-        public void dealPlayerFiveCards(Player player){
-            for(int i=0;i<5;i++){
-                player.receiveCard(this.deal());
-            }
+        public int cardsLeft(){
+            return this.cards.size();
         }
-
-
 }

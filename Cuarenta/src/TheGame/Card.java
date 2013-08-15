@@ -1,11 +1,12 @@
 
+
 /*
  * Card is defined in a fairly self explanatory way:
  *  - Must have rank (ie. number)
  *  - Must have suit (ie. symbol)
  * 
  *  POSSIBILITIES:
- *      - should Card.java define an image to be displayed as well?s
+ *      - should Card.java define an image to be displayed as well? I think it shall
  */
 
 
