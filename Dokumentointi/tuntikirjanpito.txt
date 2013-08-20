@@ -4,3 +4,4 @@
 3.8  2h - Pohdintaa luokkakaavioista, perusluokkien ohjelmointia, luin Junit testauksesta
 13.8 3h - Muutaman luokan lisäys, luokkien perusteet melko kunnossa. Seuraavaksi pelin logiikkaa ja käyttiksen toimintaa
 14.8 3h - Paljon aikaa tuhlattu 'refaktorointiin', koitan yksinkertaistaa asioita, mutta hyödyt tuntuvat oleva pienet (ja ehkä jopa haitallista myöhemmin). Joten lisäsin asiat takaisin. JUnit testejä melko paljon. Auttoivat muutaman virheen havaitsemisessa.
+20.8 3h - GUI:n perusteet, mikään ei tosin toimi vielä. Pitää keksiä huomenna miten teen itse 'pelimoottorin'. 
