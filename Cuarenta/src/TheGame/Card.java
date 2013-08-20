@@ -17,10 +17,12 @@ public class Card {
     
     private Rank rank;
     private Suit suit;
+    private String imagePath;
     
     public Card(Rank rank, Suit suit){
         this.suit = suit;
         this.rank = rank;
+        this.imagePath = "/cs/fs/home/tolaakso/Desktop/Kurssit/KesaLabra2013/Cuarenta/cardImages" + this;
     }
     
     public Rank getRank(){
@@ -29,6 +31,10 @@ public class Card {
     
     public Suit getSuit(){
         return this.suit;
+    }
+    
+    public String getImagePath(){
+        return this.imagePath;
     }
     
     public boolean equals(Card card){

@@ -24,6 +24,10 @@ public class CuarentaGame {
     public Player getComputerPlayer(){
         return this.computer;
     }
+    
+    public Hand getHumanHand(){
+        return this.human.getHand();
+    }
 
     public Deck getDeck(){
         return this.deck;

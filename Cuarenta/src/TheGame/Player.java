@@ -46,6 +46,10 @@ public class Player{
             return this.name;
         }
         
+        public Hand getHand(){
+            return this.hand;
+        }
+        
        public int numberOfCardsInHand(){
            return this.hand.numberOfCards();
        }
