@@ -1,17 +1,19 @@
 
 
-/*
- * Card is defined in a fairly self explanatory way:
- *  - Must have rank (ie. number)
- *  - Must have suit (ie. symbol)
- * 
- *  POSSIBILITIES:
- *      - should Card.java define an image to be displayed as well? I think it shall
- */
 
 
 package TheGame;
 
+/**
+ * Card is defined in a fairly self explanatory way:
+ *  - Must have rank (ie. number)
+ *  - Must have suit (ie. symbol)
+ * 
+ * Additionally, card contains a path to an image file. I'm not sure if this is
+ * the best way to dispaly the image on screen, but it works.
+ * 
+ * @author Teemu Laakso
+ */
 
 public class Card {
     
@@ -22,7 +24,7 @@ public class Card {
     public Card(Rank rank, Suit suit){
         this.suit = suit;
         this.rank = rank;
-        this.imagePath = "/cs/fs/home/tolaakso/Desktop/Kurssit/KesaLabra2013/Cuarenta/cardImages" + this;
+        this.imagePath = "/cs/fs/home/tolaakso/Desktop/Kurssit/KesaLabra2013/Cuarenta/cardImages/" + this + ".png";
     }
     
     public Rank getRank(){

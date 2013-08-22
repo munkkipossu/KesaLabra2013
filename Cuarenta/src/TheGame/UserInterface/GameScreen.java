@@ -91,10 +91,11 @@ public class GameScreen implements Runnable {
       private JPanel drawJokerHand(){
         JPanel panel = new JPanel(new GridLayout(1, 6));
         JLabel cards[] = new JLabel[5];
+        Deck deck = new Deck();
         try{
             
             for(int i=0;i<5;i++){
-                cards[i]= new JLabel(new ImageIcon(ImageIO.read(new File("/cs/fs/home/tolaakso/Desktop/Kurssit/KesaLabra2013/Cuarenta/cardImages/54.png"))));
+                cards[i]= new JLabel(new ImageIcon(ImageIO.read(new File((deck.deal()).getImagePath()))));
                 cards[i].addMouseListener(new CardListener(cards[i]));
                 panel.add(cards[i]);
             }

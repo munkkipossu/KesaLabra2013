@@ -11,6 +11,7 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.*;
 
+import TheGame.*;
 
 /**
  *
@@ -19,6 +20,9 @@ import javax.swing.*;
 public class MainScreen implements Runnable {
 
     public static void main(String[] args) {
+        Deck deck = new Deck();
+        System.out.println(deck.deal().getImagePath());
+
         MainScreen mainScreen = new MainScreen();
         SwingUtilities.invokeLater(mainScreen);
     }

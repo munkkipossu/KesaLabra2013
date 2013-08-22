@@ -1,6 +1,8 @@
 
+package TheGame;
 
-    /*
+
+    /**
      * The game is played as follows:
      * 
      * Win condition: 40 point
@@ -18,10 +20,9 @@
      *
      * 4) If no one win, deal new round.
      * 
+     * @author Teemu Laakso
      */
 
-
-package TheGame;
 
 public class Logic {
     
@@ -39,17 +40,10 @@ public class Logic {
                 game.emptyDiscardpiles();
                 game.getDeck().shuffle();
             }
-            dealCards(game);
+            game.dealCards();
             playRound(game);
         }
         
-    }
-    
-    private void dealCards(CuarentaGame game){
-        for(int i=0; i<5; i++){
-            game.getHumanPlayer().receiveCard(game.getDeck().deal());
-            game.getComputerPlayer().receiveCard(game.getDeck().deal());
-        }
     }
     
     

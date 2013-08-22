@@ -1,10 +1,14 @@
-/*
+
+package TheGame;
+
+/**
  * CardHolder represents a collection of cards. I'm not sure how necessary it is.
  * I might just simply replace it with an 'ArrayList<Card>' at some point, 
  * but I'll let it stay for now. An advantage could be gained from enforcing an
  * upperlimit for the number of cards it can hold.
+ *
+ * @author Teemu Laakso 
  */
-package TheGame;
 
 import java.util.ArrayList;
 

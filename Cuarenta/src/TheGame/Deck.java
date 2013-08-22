@@ -1,18 +1,21 @@
 
 
-/*
+package TheGame;
+import java.util.ArrayList;
+
+
+
+/**
  * The Deck should work as follows:
  *  -It contains 40 Cards:
  *      - 1-7, jack, queen, king of each suit
  *  -It contains a function that deals one card randomly
  *      - the same card should not be dealt multiple times
  *      - the deck can ONLY deal the 40 cards it possesses
- *  -Shuffling of the deck returns again all 40 cards 
+ *  -Shuffling of the deck returns again all 40 cards
+ * 
+ * @author Teemu Laakso
  */
-
-package TheGame;
-import java.util.ArrayList;
-
 
 public class Deck{
     
@@ -26,6 +29,13 @@ public class Deck{
 		this.newCards();    // the 'shuffling' is done in randomizing the deal, so shuffle just creates a full deck
 	}
 
+        /**
+         * The method deals a card from possible cards that it possesses.
+         * The same card cannot be dealt twice (or more).
+         * 
+         * @return a new card from the deck. After 40 cards
+         * have been dealt, returns null.
+         */
 	public Card deal(){
             if(this.cards.size() == 0)
                 return null;
@@ -49,4 +59,6 @@ public class Deck{
         public int cardsLeft(){
             return this.cards.size();
         }
+        
+        
 }

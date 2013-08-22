@@ -1,5 +1,8 @@
 
-/*
+
+package TheGame;
+
+/**
  * The player must have the followin properties:
  *  - Name (because why not... or something?)
  *  - CardHolder = Hand = the cards that the player is dealt and can play
@@ -12,10 +15,8 @@
  *  - The player must be able to choose a card to play from their hand
  *  - To choose which cards he collects from the table (if possible)
  * 
+ * @author Teemu Laakso
  */
-
-package TheGame;
-
 public class Player{
 
 	private String name;
