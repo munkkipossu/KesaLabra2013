@@ -1,6 +1,7 @@
 
 
 package TheGame;
+import java.util.ArrayList;
 
 
 /**
@@ -18,14 +19,14 @@ public class CuarentaGame {
     private Player human;
     private Player computer;
     private Deck deck;
-    private Table table; 
+    private ArrayList<Card> table; 
     
 
     public CuarentaGame(String firstName){
         this.human = new Player(firstName);
         this.computer = new Player("Computer");
         this.deck = new Deck();
-        this.table = new Table();
+        this.table = new ArrayList<Card>();
     }
     
     public Player getHumanPlayer(){
@@ -44,7 +45,7 @@ public class CuarentaGame {
         return this.deck;
     }
     
-    public Table getTable(){
+    public ArrayList<Card> getTable(){
         return this.table;
     }
     
@@ -67,7 +68,8 @@ public class CuarentaGame {
     }
     
     public Card lastCardPlayed(){
-        return this.table.getLastCardPlayed();
+        int lastCard = this.table.size();
+        return this.table.get(lastCard);
     }
     
     

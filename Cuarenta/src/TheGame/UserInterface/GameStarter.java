@@ -23,15 +23,16 @@ import javax.swing.*;
 public class GameStarter implements ActionListener {
 
     private CuarentaGame game;
-    private JTextArea playerName;
+    private String name;
     
     
     public GameStarter(JTextArea playerName){
-        this.game = new CuarentaGame(playerName.getText());
+        this.name = playerName.getText();
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
+        this.game= new CuarentaGame(name);
         GameScreen gameScreen = new GameScreen(game);
         System.out.println("Game Started");
         

@@ -1,4 +1,3 @@
-
 package TheGame;
 
 /**
@@ -9,12 +8,12 @@ package TheGame;
  * @author tolaakso
  */
 public class Hand extends CardHolder{
-    public boolean containsSameNumber(Card card){
-        for(int i=0; i<this.numberOfCards(); i++){
-            if(this.getCard(i).getRank() == card.getRank());
-                return true;
+
+    public boolean containsSameNumber(Card card) {
+        for (int i = 0; i < this.numberOfCards(); i++) {
+            if (this.getCard(i).getRank() == card.getRank());
+            return true;
         }
         return false;
     }
-    
 }

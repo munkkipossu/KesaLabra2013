@@ -26,13 +26,20 @@ public class CardHolder {
     }
     
     public void addCard(Card card) {
-        if (this.cards.size() < 6) {
+        if (this.cards.size() < 5) {
             this.cards.add(card);
         }
     }
     
-    public void removeCard(Card chosenCard) {
+    public Card removeCard(int chosenCard){
+        Card card = this.getCard(chosenCard);
         this.cards.remove(chosenCard);
+        return card;
+    }
+    
+    public Card removeCard(Card chosenCard) {
+        this.cards.remove(chosenCard);
+        return chosenCard;
     }
 
     public int numberOfCards() {

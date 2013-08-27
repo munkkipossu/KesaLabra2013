@@ -4,6 +4,9 @@
  */
 package TheGame.UserInterface;
 import TheGame.CuarentaGame;
+import TheGame.Card;
+import TheGame.Suit;
+import TheGame.Rank;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -31,12 +34,21 @@ public class PlayerListener implements ActionListener {
         this.panel = panel;
         this.table = table;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        TheGame.Logic.humanMove(this.game, this.panel.getChosenCard(), this.table.getChosenCards());
-        System.out.println("I am here");
-        panel.repaint();
-        table.repaint();
+        Card card = panel.getChosenCard();
+        System.out.println(""+card);
+                    table.add(new Card(Rank.ACE, Suit.CLUBS));
+                    table.revalidate();
+                    table.repaint();
+        if (card != null) {
+//            TheGame.Logic.humanMove(this.game, this.panel.getChosenCard(), this.table.getChosenCards());
+            System.out.println("I am here");
+//        this.table.add(this.panel.getChosenCard());
+
+            panel.repaint();
+            table.repaint();
+        }
     }
 }

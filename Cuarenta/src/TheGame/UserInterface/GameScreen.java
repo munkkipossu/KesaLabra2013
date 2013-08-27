@@ -51,13 +51,16 @@ public class GameScreen implements Runnable {
    //     setLayout(new Gridlayout(9,9));
         
         JPanel computerHand = drawComputerHand();
-        HandPanel playerHand = new HandPanel(game.getHumanHand());
+        HandPanel playerHand = new HandPanel(game.getHumanHand(),0);
+        TablePanel tablePanel = new TablePanel(game);
         
         container.add(computerHand, BorderLayout.NORTH);
         container.add(playerHand, BorderLayout.SOUTH);
         
         JPanel options = playButton(game, playerHand, new TablePanel(game));
         container.add(options, BorderLayout.EAST);
+        
+        container.add(tablePanel, BorderLayout.CENTER);
     }
     
     private JPanel playButton(CuarentaGame game, HandPanel hand, TablePanel table){

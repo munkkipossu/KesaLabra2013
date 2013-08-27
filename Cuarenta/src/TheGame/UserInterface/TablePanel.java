@@ -6,6 +6,7 @@ package TheGame.UserInterface;
 import TheGame.*;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,28 +14,25 @@ import java.awt.GridLayout;
  */
 public class TablePanel extends JPanel {
     
-    private Table table;
+    private ArrayList<Card> table;
     private TableListener tableListener;
-    private Card[] chosenCards;
+    private ArrayList<Card> chosenCards;
     
     public TablePanel(CuarentaGame game){
         super(new GridLayout(4,5));
- //       this.cardListener = new TableListener;
-        this.table=game.getTable();
-        this.chosenCards=null;
+        this.tableListener = new TableListener();
+        this.table = game.getTable();
+        this.chosenCards= new ArrayList<Card>();
     }
     
     public void addCard(Card card){
-        this.table.addCard(card);
-        
+        card.addMouseListener(tableListener);
+        this.table.add(card);
+        this.add(card);
     }
     
-    
-    public Card[] getChosenCards(){
-        Card[] cards = new Card[2];
-        cards[0]= new Card(Rank.TWO, Suit.CLUBS);
-        cards[1]= new Card(Rank.TWO, Suit.CLUBS);
-        return cards;
+    public ArrayList<Card> getChosenCards(){
+        return chosenCards;
     }
     
 }

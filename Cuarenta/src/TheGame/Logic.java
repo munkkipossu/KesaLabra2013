@@ -58,7 +58,7 @@ public class Logic {
   //      }
    //     else
           game.getHumanPlayer().getHand().removeCard(card);
-          game.getTable().addCard(card);
+          game.getTable().add(card);
         
 
         
