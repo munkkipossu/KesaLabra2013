@@ -25,6 +25,7 @@ public class GameStarter implements ActionListener {
     private CuarentaGame game;
     private JTextArea playerName;
     
+    
     public GameStarter(JTextArea playerName){
         this.game = new CuarentaGame(playerName.getText());
     }
@@ -33,6 +34,7 @@ public class GameStarter implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         GameScreen gameScreen = new GameScreen(game);
         System.out.println("Game Started");
+        
         SwingUtilities.invokeLater(gameScreen);
     }
 }

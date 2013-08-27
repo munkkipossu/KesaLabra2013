@@ -3,6 +3,8 @@
 
 
 package TheGame;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  * Card is defined in a fairly self explanatory way:
@@ -15,16 +17,15 @@ package TheGame;
  * @author Teemu Laakso
  */
 
-public class Card {
+public class Card extends JLabel{
     
     private Rank rank;
     private Suit suit;
-    private String imagePath;
     
     public Card(Rank rank, Suit suit){
         this.suit = suit;
         this.rank = rank;
-        this.imagePath = "/cs/fs/home/tolaakso/Desktop/Kurssit/KesaLabra2013/Cuarenta/cardImages/" + this + ".png";
+        this.setIcon(new ImageIcon(getClass().getResource("../Images/" + this + ".png")));
     }
     
     public Rank getRank(){
@@ -35,10 +36,10 @@ public class Card {
         return this.suit;
     }
     
-    public String getImagePath(){
-        return this.imagePath;
+    public void setEmptyIcon(){
+        this.setIcon(new ImageIcon());
     }
-    
+        
     public boolean equals(Card card){
         if(this.rank.equals(card.getRank()) && this.suit.equals(card.getSuit()))
             return true;

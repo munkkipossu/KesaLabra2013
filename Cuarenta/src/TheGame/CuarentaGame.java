@@ -44,6 +44,10 @@ public class CuarentaGame {
         return this.deck;
     }
     
+    public Table getTable(){
+        return this.table;
+    }
+    
     public void emptyDiscardpiles(){
         this.human.newDiscardpile();
         this.computer.newDiscardpile();

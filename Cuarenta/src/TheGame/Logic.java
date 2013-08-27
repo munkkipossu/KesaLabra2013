@@ -46,6 +46,49 @@ public class Logic {
         
     }
     
+    public static void prepareGame(CuarentaGame game){
+       game.dealCards();
+    }
+    
+    public static void humanMove(CuarentaGame game, Card card, Card[] tableCards){
+        
+        
+        // Conditions on human move
+ //       if(legalMove(game.getHumanHand().getCard(playerCard), int[] tableCards, game.getTable())){
+  //      }
+   //     else
+          game.getHumanPlayer().getHand().removeCard(card);
+          game.getTable().addCard(card);
+        
+
+        
+        
+        // If Computer has cards, computer plays,
+        if(game.getComputerPlayer().getHand().numberOfCards()>0){
+       //     computerPlayCard(game);
+      //      checkPoints();
+        }
+        
+        // If human doesn't have cards anymore, computer can't either. Thus new cards are dealt
+        if(game.getHumanPlayer().getHand().numberOfCards() == 0){
+            if(game.getDeck().cardsLeft()>0)
+                game.dealCards();
+            else{   
+                game.getDeck().shuffle();
+                game.dealCards();
+            }
+                
+        }
+
+    }
+    
+    public void computerPlayCard(CuarentaGame game) {
+        Card lastPlayed = game.lastCardPlayed();
+        for (int i = 0; i < game.getComputerPlayer().getHand().numberOfCards(); i++) {
+            Card card = game.getComputerPlayer().getHand().getCard(i);
+            if (card.getRank() == lastPlayed.getRank());
+        }
+    }
     
     /*
      * NOTE: The following contains some thoughts on how a round should be

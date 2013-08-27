@@ -60,8 +60,8 @@ public class Player{
             this.hand.addCard(card);
         }
         
-        public Card playCard(int cardNumber){
-            return this.hand.removeCard(cardNumber);
+        public void playCard(Card card){
+            this.hand.removeCard(card);
         }
         
         

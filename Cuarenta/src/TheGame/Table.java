@@ -27,7 +27,8 @@ public class Table extends CardHolder{
     }
     
     public Card takeCard(int whichCard){
-        Card card = super.removeCard(whichCard);
+        Card card = super.getCard(whichCard);
+        super.removeCard(card);
         
         if(this.lastCardPlayed.equals(card)){
             this.lastCardPlayed = null;

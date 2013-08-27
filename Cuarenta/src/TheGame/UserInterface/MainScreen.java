@@ -21,8 +21,6 @@ public class MainScreen implements Runnable {
 
     public static void main(String[] args) {
         Deck deck = new Deck();
-        System.out.println(deck.deal().getImagePath());
-
         MainScreen mainScreen = new MainScreen();
         SwingUtilities.invokeLater(mainScreen);
     }

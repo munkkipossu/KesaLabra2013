@@ -26,10 +26,12 @@ import java.awt.Color;
 public class GameScreen implements Runnable {
   
     private JFrame frame;
-    CuarentaGame game;
+    private CuarentaGame game;
+    private CardListener cardListener;
     
     public GameScreen(CuarentaGame game) {
         this.game = game;
+        TheGame.Logic.prepareGame(game);
     }
     
     @Override
@@ -37,7 +39,7 @@ public class GameScreen implements Runnable {
         frame = new JFrame("Who shall win?");
         frame.setPreferredSize(new Dimension(600, 600));
 
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         createComponents(frame.getContentPane());
 
@@ -48,70 +50,85 @@ public class GameScreen implements Runnable {
     private void createComponents(Container container){
    //     setLayout(new Gridlayout(9,9));
         
-        JPanel computerHand = drawJokerHand();
-        JPanel playerHand = drawJokerHand();
-
+        JPanel computerHand = drawComputerHand();
+        HandPanel playerHand = new HandPanel(game.getHumanHand());
+        
         container.add(computerHand, BorderLayout.NORTH);
         container.add(playerHand, BorderLayout.SOUTH);
         
-        
+        JPanel options = playButton(game, playerHand, new TablePanel(game));
+        container.add(options, BorderLayout.EAST);
     }
     
-    private JPanel drawGameInfo(){
-        JPanel panel = new JPanel(new GridLayout(3,1));
+    private JPanel playButton(CuarentaGame game, HandPanel hand, TablePanel table){
+        JPanel panel = new JPanel(new GridLayout(5,1));
 
-        JTextArea computerPoints = new JTextArea("points");
-        panel.add(computerPoints);
-        JTextArea dealer = new JTextArea("computer");
-        panel.add(dealer);
-        JTextArea humanPoints = new JTextArea("points");
-        panel.add(humanPoints);
+        panel.add(new JLabel(""));
+        panel.add(new JLabel(""));
+        panel.add(new JLabel(""));
+
+        JButton playButton = new JButton("Click");
+        panel.add(playButton);
+        playButton.addActionListener(new PlayerListener(game, hand, table));
+
+        panel.add(new JLabel(""));
 
         return panel;
     
     }
     
-    private JPanel createHand(Hand hand){
+    
+    private JPanel drawTable(Table table){
+        JPanel panel = new JPanel(new GridLayout(4, 5));
+        JLabel cards[];
+        try{
+            
+        } catch(Exception e)
+        {
+            System.out.println("error in drawing the cards");
+        }
+        
+                
+        JPanel pointPanel = new JPanel(new BorderLayout());
+        pointPanel.add(new JLabel("Points"), BorderLayout.NORTH);
+        pointPanel.add(new JLabel("0"), BorderLayout.CENTER);
+        panel.add(pointPanel);
+        
+        JPanel discardPanel = new JPanel(new BorderLayout());
+        discardPanel.add(new JLabel("Discardpile"), BorderLayout.NORTH);
+        discardPanel.add(new JLabel("0"), BorderLayout.CENTER);
+        panel.add(discardPanel);
+        return panel;
+    }
+    
+    private JPanel drawComputerHand(){
         JPanel panel = new JPanel(new GridLayout(1, 5));
         JLabel cards[] = new JLabel[5];
         try{
             
             for(int i=0;i<5;i++){
                 cards[i]= new JLabel(new ImageIcon(ImageIO.read(new File("/cs/fs/home/tolaakso/Desktop/Kurssit/KesaLabra2013/Cuarenta/cardImages/54.png"))));
-                cards[i].addMouseListener(new CardListener(cards[i]));
+                //cards[i]= new JLabel(new ImageIcon(getClass().getResource("../src/Images/54.png")));
                 panel.add(cards[i]);
             }
         } catch(Exception e)
         {
             System.out.println("error in drawing the cards");
         }
+        
+                
+        JPanel pointPanel = new JPanel(new BorderLayout());
+        pointPanel.add(new JLabel("Points"), BorderLayout.NORTH);
+        pointPanel.add(new JLabel("0"), BorderLayout.CENTER);
+        panel.add(pointPanel);
+        
+        JPanel discardPanel = new JPanel(new BorderLayout());
+        discardPanel.add(new JLabel("Discardpile"), BorderLayout.NORTH);
+        discardPanel.add(new JLabel("0"), BorderLayout.CENTER);
+        panel.add(discardPanel);
         return panel;
     }
     
-      private JPanel drawJokerHand(){
-        JPanel panel = new JPanel(new GridLayout(1, 6));
-        JLabel cards[] = new JLabel[5];
-        Deck deck = new Deck();
-        try{
-            
-            for(int i=0;i<5;i++){
-                cards[i]= new JLabel(new ImageIcon(ImageIO.read(new File((deck.deal()).getImagePath()))));
-                cards[i].addMouseListener(new CardListener(cards[i]));
-                panel.add(cards[i]);
-            }
-        } catch(Exception e)
-        {
-            System.out.println("error in drawing the cards");
-        }
-        
-        JPanel pointPanel = new JPanel(new BorderLayout());
-        pointPanel.add(new JLabel("Points"), BorderLayout.NORTH);
-        pointPanel.add(new JLabel("31"), BorderLayout.CENTER);
-        panel.add(pointPanel);
-        
-        return panel;
-    }
-
     public JFrame getFrame() {
         return frame;
     }

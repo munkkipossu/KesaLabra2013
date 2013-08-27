@@ -4,7 +4,7 @@
  */
 package TheGame.UserInterface;
 
-import TheGame.CuarentaGame;
+import TheGame.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -24,33 +24,38 @@ import java.awt.event.*;
  */
 public class CardListener implements MouseListener {
 
-    private JLabel label;
-    private boolean borderExists;
-
-    public CardListener(JLabel jlabel) {
-        this.label = jlabel;
-        this.borderExists = false;
+    private JLabel raisedBorders;
+    private HandPanel handPanel;
+    
+    public CardListener(HandPanel panel) {
+        this.handPanel=panel;
+        this.raisedBorders=null;
     }
 
-    public void mouseClicked(MouseEvent arg0) {
+    @Override
+    public void mouseClicked(MouseEvent e) {
     }
 
-    public void mouseExited(MouseEvent arg0) {
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
 
-    public void mouseEntered(MouseEvent arg0) {
+    @Override
+    public void mouseEntered(MouseEvent e) {
     }
 
-    public void mousePressed(MouseEvent arg0) {
+    @Override
+    public void mousePressed(MouseEvent e) {
     }
 
-    public void mouseReleased(MouseEvent arg0) {
-        if(borderExists){
-            this.label.setBorder(BorderFactory.createEmptyBorder());
-            borderExists = false;
-        }else{
-            this.label.setBorder(BorderFactory.createRaisedBevelBorder());
-            borderExists = true;
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        if (raisedBorders != null) {
+            this.raisedBorders.setBorder(BorderFactory.createEmptyBorder());
         }
+        this.raisedBorders = (JLabel) e.getSource();
+        this.raisedBorders.setBorder(BorderFactory.createRaisedBevelBorder());
+
+        this.handPanel.setChosenCard((Card)e.getSource());
     }
 }
