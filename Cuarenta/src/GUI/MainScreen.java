@@ -79,7 +79,6 @@ public class MainScreen implements Runnable {
         panel.add(second);
         
         return panel;
-                
     }
     
     public JFrame getFrame() {

@@ -26,11 +26,12 @@ public class TablePanel extends JPanel {
     private Card[] cards;
     
     public TablePanel(CuarentaGame game){
-        super(new GridLayout(1,5));
+        super(new GridLayout(8,5));
         this.table = game.getTable();
         this.chosenCards= new ArrayList<Card>();
         this.cards = new Card[40];
         
+
         this.drawTable();
         }
     
@@ -51,12 +52,15 @@ public class TablePanel extends JPanel {
         }
         
         try{
+ 
             System.out.println(this.table.numberOfCards());
             for(int i=0;i<this.table.numberOfCards();i++){
-                this.cards[i]=new Card(Rank.ACE, Suit.HEARTS);//this.table.getCard(i);
+  //              this.cards[i]=new Card(Rank.ACE, Suit.HEARTS);
+                this.cards[i]=this.table.getCard(i);
                 this.cards[i].addMouseListener(new TableListener(this.chosenCards));
-                this.add(cards[i]);
-                System.out.println(this.cards[i]);
+                this.add(this.cards[i]);
+                System.out.println(this.table.getCard(i));
+                //System.out.println(this.cards[i]);
            }
         }
         catch(Exception e){

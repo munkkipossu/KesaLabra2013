@@ -47,7 +47,7 @@ public class HandPanel extends JPanel {
             }
         }
         catch(Exception e){
-                        System.out.println("can't remove shit from dah hand");
+                        System.out.println("can't remove cards from dah hand");
         }
         
         try{

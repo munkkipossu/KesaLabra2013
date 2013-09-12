@@ -31,38 +31,55 @@ public class Logic {
     }
     
     public static void humanMove(CuarentaGame game, Card playedCard, ArrayList<Card> chosenCards){
-
-        game.getTable().addCard(playedCard);
-        game.getHumanHand().removeCard(playedCard);
         
-        if(chosenCards.size()==1){
+        if(chosenCards.size()==0){
+            game.getTable().addCard(playedCard);
+            game.getHumanHand().removeCard(playedCard);
+            return;
+        }
+
+        else if(chosenCards.size()==1){
             if(playedCard.sameNumber(chosenCards.get(0))){
                 if(chosenCards.get(0).equals(game.lastCardPlayed())){
                     game.getHumanPlayer().addPoints(2);
                 }
                 game.getHumanPlayer().addToDiscardPile(game.getHumanHand().removeCard(playedCard));
                 game.getHumanPlayer().addToDiscardPile(game.getTable().removeCard(chosenCards.get(0)));
-                
+                if(game.getTable().numberOfCards()==0){
+                    game.getHumanPlayer().addPoints(2);
+                }
             }
             else{
                 game.getTable().addCard(playedCard);
-            }
                 game.getHumanHand().removeCard(playedCard);
+            }
+            return;
         }
-        else if(checkOtherPossibilities(playedCard, chosenCards)){
-                
-        }
+
         else{
-            game.getHumanHand().removeCard(playedCard);
-        }
+            for(int i=0; i<chosenCards.size(); i++){
+                if(playedCards.equals(chosenCards[i]));
+                
+            }
             
-        
-        if(game.getTable().numberOfCards()==0){
-            game.getHumanPlayer().addPoints(2);
-        }       
-                game.getHumanPlayer().addPoints(2);
-        
-        // Conditions on human move
+            if (playedCard.getRank() < Rank.JACK){            
+                for (int i = 0; i < chosenCards.size(); i++) {
+                    for (int j = i + 1; j < chosenCards.size(); j++) {
+                        if (playedCard.getRank < Rank.JACK) {
+                            if (chosenCards[i].getRank() + chosenCards[j].getRank() == playedCard.getRank()) {
+                                
+                            }
+                        }
+               }
+            }    
+        }
+        }
+           
+        else{
+            game.getTable().addCard(playedCard);
+            game.getHumanHand().removeCard(playedCard);
+        }            
+            // Conditions on human move
  //       if(legalMove(game.getHumanHand().getCard(playerCard), int[] tableCards, game.getTable())){
   //      }
    //     else
@@ -88,12 +105,17 @@ public class Logic {
             }
                 
         }
-
+        
     }
     
-    private static boolean checkOtherPossibilities(Card playedCard, ArrayList<Card> chosenCards){
+    private static boolean (Card playedCard, ArrayList<Card> chosenCards){
         if(chosenCards.size()==0){
             return false;
+        }
+        if(choseCards.size()==1){
+            if(playedCard.sameNumber(chosenCards[0])){
+                return true;
+            }
         }
         
         return false;

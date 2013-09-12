@@ -55,7 +55,6 @@ public class GameScreen implements Runnable {
         JPanel computerHand = drawComputerHand(game.getComputerPlayer().getHand());
         HandPanel playerHand = new HandPanel(game.getHumanHand());
         TablePanel tablePanel = new TablePanel(game);
-
       
         container.add(computerHand, BorderLayout.NORTH);
         container.add(playerHand, BorderLayout.SOUTH);
@@ -84,7 +83,7 @@ public class GameScreen implements Runnable {
     }
     
     
-    private JPanel drawTable(Table table){
+   /* private JPanel drawTable(Table table){
         JPanel panel = new JPanel(new GridLayout(4, 5));
         JLabel cards[];
         try{
@@ -106,14 +105,15 @@ public class GameScreen implements Runnable {
         panel.add(discardPanel);
         return panel;
     }
+    * */
     
     private JPanel drawComputerHand(Hand hand){
         JPanel panel = new JPanel(new GridLayout(1, 5));
-        JLabel cards[] = new JLabel[5];
+        Card cards[] = new Card[5];
         try{
             
             for(int i=0;i<hand.numberOfCards();i++){
-                cards[i]= new JLabel(new ImageIcon(ImageIO.read(new File("./CardImages/54.png"))));
+                cards[i]= hand.getCard(i);
                 panel.add(cards[i]);
             }
             for(int i=hand.numberOfCards();i<5;i++){
