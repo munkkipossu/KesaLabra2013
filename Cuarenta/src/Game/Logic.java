@@ -29,16 +29,45 @@ public class Logic {
     public static void prepareGame(CuarentaGame game){
        game.dealCards();
     }
-    
+       
     public static void humanMove(CuarentaGame game, Card playedCard, ArrayList<Card> chosenCards){
         
-        if(chosenCards.size()==0){
+        // The number of cards chosen from the table determines what is done
+        
+        switch(chosenCards.size()){
+            case 0: noCardsChosen(game, playedCard);
+                    break;
+            case 1: oneCardChosen(game, playedCard, chosenCards.get(0));
+                    break;
+            default: generalAction(game, playedCard, chosenCards);
+        }
+        
+    }
+    
+    private static void noCardsChosen(CuarentaGame game, Card playedCard){
+        if(game.getTable().getLastCardPlayed().equalsSameNumber(playedCard)){
+            caida(game.getHumanPlayer());
+            game.getHumanPlayer().addToDiscardPile(playedCard);
+            game.getHumanPlayer().addToDiscardPile(game.getTable().takeCard(game.getTable().getLastCardPlayed()));
+        }
+        else{
             game.getTable().addCard(playedCard);
             game.getHumanHand().removeCard(playedCard);
-            return;
         }
-
-        else if(chosenCards.size()==1){
+        
+    }
+        
+    private static void caida(Player player){
+        player.addPoints(2);
+    }
+    
+    private static void oneCardChosen(CuarentaGame game, Card playedCard, Card chosenCard){
+        return;
+        
+        
+        /*
+        
+                else if(chosenCards.size()==1){
             if(playedCard.sameNumber(chosenCards.get(0))){
                 if(chosenCards.get(0).equals(game.lastCardPlayed())){
                     game.getHumanPlayer().addPoints(2);
@@ -55,10 +84,18 @@ public class Logic {
             }
             return;
         }
+               */
+    }
+    
+    private static void generalAction(CuarentaGame game, Card playedCard, ArrayList<Card> chosenCards){
+        return;
+    }
 
+
+        /*
         else{
             for(int i=0; i<chosenCards.size(); i++){
-                if(playedCards.equals(chosenCards[i]));
+                if(playedCard.equals(chosenCards.get(i)));
                 
             }
             
@@ -70,15 +107,12 @@ public class Logic {
                                 
                             }
                         }
-               }
-            }    
+                    }
+                }    
+            }
         }
-        }
-           
-        else{
-            game.getTable().addCard(playedCard);
-            game.getHumanHand().removeCard(playedCard);
-        }            
+           */
+               
             // Conditions on human move
  //       if(legalMove(game.getHumanHand().getCard(playerCard), int[] tableCards, game.getTable())){
   //      }
@@ -87,7 +121,7 @@ public class Logic {
      //     game.getTable().add(card);
         
 
-        
+        /*
         
         // If Computer has cards, computer plays,
         if(game.getComputerPlayer().getHand().numberOfCards()>0){
@@ -120,7 +154,7 @@ public class Logic {
         
         return false;
     }
-    
+    */
     public void computerPlayCard(CuarentaGame game) {
         Card lastPlayed = game.lastCardPlayed();
         for (int i = 0; i < game.getComputerPlayer().getHand().numberOfCards(); i++) {
@@ -170,8 +204,10 @@ public class Logic {
             return 7 + (numberOfCards-18);
     }
      
-    public boolean checkWinCondition(Player player){
-        return player.getPoints() >= 40;
+    public static void checkWinCondition(Player player){
+        if(player.getPoints() >= 40){
+            game.endGame(player);
+        }
     }
     
 }

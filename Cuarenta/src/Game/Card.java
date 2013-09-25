@@ -36,7 +36,7 @@ public class Card extends JLabel{
         return this.suit;
     }
     
-    public boolean sameNumber(Card card){
+    public boolean equalsSameNumber(Card card){
         return this.getRank() == card.getRank();
     }
         

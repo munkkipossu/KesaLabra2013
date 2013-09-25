@@ -27,14 +27,23 @@ public class Table extends CardHolder{
     }
     
     public Card takeCard(int whichCard){
-        Card card = super.getCard(whichCard);
-        super.removeCard(card);
-        
+        Card card = super.removeCard(whichCard);
+         
         if(this.lastCardPlayed.equals(card)){
             this.lastCardPlayed = null;
         }
         return card;
     }
+    
+    public Card takeCard(Card whichCard){
+        Card card = super.removeCard(whichCard);
+         
+        if(this.lastCardPlayed.equals(card)){
+            this.lastCardPlayed = null;
+        }
+        return card;
+    }
+    
     
     
 }
