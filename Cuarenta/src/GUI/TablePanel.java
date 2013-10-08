@@ -26,14 +26,11 @@ public class TablePanel extends JPanel {
     private Card[] cards;
     
     public TablePanel(CuarentaGame game){
-        super(new GridLayout(8,5));
+        super(new GridLayout(1,7));
         this.table = game.getTable();
         this.chosenCards= new ArrayList<Card>();
         this.cards = new Card[40];
-        
-
-        this.drawTable();
-        }
+    }
     
     
         
@@ -42,27 +39,34 @@ public class TablePanel extends JPanel {
     }
       
     public void drawTable(){
-        try{
-            for(int i=0; i<40; i++){
-                this.remove(0);
-            }
-        }
-        catch(Exception e){
-            System.out.println("Removed all cards from table");
-        }
         
+        this.removeAll();
+                
         try{
+          System.out.println("Table contains:");
+   /*         for(int i=0; i<this.table.numberOfCards(); i++){
+                System.out.println(cards[i]);
+   
+   * }*/
  
-            System.out.println(this.table.numberOfCards());
+            
+           // for(int i=0;i<2;i++)
+            //    this.add(new Card(Rank.KING, Suit.SPADES));
+ 
+            this.add(new Card(Rank.KING, Suit.HEARTS));
             for(int i=0;i<this.table.numberOfCards();i++){
-  //              this.cards[i]=new Card(Rank.ACE, Suit.HEARTS);
+      //         this.cards[i]=new Card(Rank.ACE, Suit.HEARTS);
+
                 this.cards[i]=this.table.getCard(i);
                 this.cards[i].addMouseListener(new TableListener(this.chosenCards));
-                this.add(this.cards[i]);
-                System.out.println(this.table.getCard(i));
-                //System.out.println(this.cards[i]);
-           }
+                this.add(cards[i]);
+                System.out.println("i: " + i + " " + cards[i]);
+            }
+            
+            System.out.println("This table JPANEL has: "  + this.getComponentCount() + " components.");
+
         }
+
         catch(Exception e){
             System.out.println("failed trying to draw the table");
         }

@@ -60,7 +60,7 @@ public class Player{
             this.hand.addCard(card);
         }
         
-        public void playCard(Card card){
+        public void removeCard(Card card){
             this.hand.removeCard(card);
         }
         

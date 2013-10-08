@@ -33,11 +33,12 @@ public class Logic {
     public static void humanMove(CuarentaGame game, Card playedCard, ArrayList<Card> chosenCards){
         
         // The number of cards chosen from the table determines what is done
-        
         switch(chosenCards.size()){
             case 0: noCardsChosen(game, playedCard);
+                    System.out.println("No cards found");
                     break;
             case 1: oneCardChosen(game, playedCard, chosenCards.get(0));
+                    System.out.println("One card found");
                     break;
             default: generalAction(game, playedCard, chosenCards);
         }
@@ -45,84 +46,104 @@ public class Logic {
     }
     
     private static void noCardsChosen(CuarentaGame game, Card playedCard){
-        if(game.getTable().getLastCardPlayed().equalsSameNumber(playedCard)){
-            caida(game.getHumanPlayer());
-            game.getHumanPlayer().addToDiscardPile(playedCard);
-            game.getHumanPlayer().addToDiscardPile(game.getTable().takeCard(game.getTable().getLastCardPlayed()));
-        }
-        else{
+        // This isn't actually in the rules of the game, just a mechanic I want in there
+      //  if(sameNumberAsLastCardPlayed(game,playedCard)){
+       //     caida(game.getHumanPlayer());
+        //    game.getHumanPlayer().removeCard(playedCard);
+         //   game.getHumanPlayer().addToDiscardPile(playedCard);
+          //  game.getHumanPlayer().addToDiscardPile(game.getTable().takeCard(game.getTable().getLastCardPlayed()));
+        //}
+        //else{
             game.getTable().addCard(playedCard);
             game.getHumanHand().removeCard(playedCard);
-        }
-        
+        //}
+
+
     }
         
     private static void caida(Player player){
         player.addPoints(2);
     }
     
-    private static void oneCardChosen(CuarentaGame game, Card playedCard, Card chosenCard){
-        return;
-        
-        
-        /*
-        
-                else if(chosenCards.size()==1){
-            if(playedCard.sameNumber(chosenCards.get(0))){
-                if(chosenCards.get(0).equals(game.lastCardPlayed())){
-                    game.getHumanPlayer().addPoints(2);
-                }
-                game.getHumanPlayer().addToDiscardPile(game.getHumanHand().removeCard(playedCard));
-                game.getHumanPlayer().addToDiscardPile(game.getTable().removeCard(chosenCards.get(0)));
-                if(game.getTable().numberOfCards()==0){
-                    game.getHumanPlayer().addPoints(2);
-                }
-            }
-            else{
-                game.getTable().addCard(playedCard);
-                game.getHumanHand().removeCard(playedCard);
-            }
-            return;
-        }
-               */
+    private static boolean sameNumberAsLastCardPlayed(CuarentaGame game, Card card){
+        return card.equalsSameNumber(game.getTable().getLastCardPlayed());
     }
     
+    private static void oneCardChosen(CuarentaGame game, Card playedCard, Card chosenCard){
+        if(playedCard.equalsSameNumber(chosenCard)){
+            if(chosenCard.equals(game.getTable().getLastCardPlayed())){
+                caida(game.getHumanPlayer());
+            }
+            game.getHumanPlayer().removeCard(playedCard);
+            game.getHumanPlayer().addToDiscardPile(playedCard);
+            game.getTable().removeCard(chosenCard);
+            game.getHumanPlayer().addToDiscardPile(chosenCard);
+        }       
+        else
+            game.getHumanPlayer().removeCard(playedCard);
+            game.getTable().addCard(playedCard);
+        return;
+    }
+   
+    
+    private static boolean containsNumber(int number, ArrayList<Card> list){
+        for(int i=0;i<list.size();i++){
+            if(number == list.get(i).getRank().getValue());
+                return true;
+        }
+
+        return false;
+    }
+    
+    private static boolean containsAddivelySameNumber(Card card, ArrayList<Card> list){
+        // If the chosen card has a rank of 3, 4, 5, 6, or 7 it can 'added' up to
+        if(card.getRank().getValue()<3 || card.getRank().getValue()>7){
+            for(int i=0; i<list.size(); i++){
+                for(int j=i; j<list.size(); j++){
+                    if(list.get(i).getRank().getValue()+list.get(j).getRank().getValue() == card.getRank().getValue())
+                        return true;
+                }
+            }
+            return false;
+        }
+        else
+            return false;
+    }
+    
+    
+    
     private static void generalAction(CuarentaGame game, Card playedCard, ArrayList<Card> chosenCards){
+        boolean correctlyPlayedHand = true;
+        if(containsNumber(playedCard.getRank().getValue(), chosenCards)){
+            for(int i=1; i<chosenCards.size(); i++){
+                if(containsNumber(playedCard.getRank().getValue()+i, chosenCards)==false){
+                    correctlyPlayedHand=false;
+                    game.getHumanPlayer().removeCard(playedCard);
+                    game.getTable().addCard(playedCard);
+                    break;
+                }
+            }
+            if(correctlyPlayedHand){
+                
+                for(int i=0; i<chosenCards.size(); i++){
+                    game.getHumanPlayer().addToDiscardPile(game.getTable().takeCard(game.getTable().getLastCardPlayed()));
+                }
+            }
+                
+        }
+        else if(containsAddivelySameNumber(playedCard, chosenCards)){
+            
+            
+        }
+        
+        else{
+            game.getTable().addCard(playedCard);
+        }
+        
         return;
     }
 
-
-        /*
-        else{
-            for(int i=0; i<chosenCards.size(); i++){
-                if(playedCard.equals(chosenCards.get(i)));
-                
-            }
-            
-            if (playedCard.getRank() < Rank.JACK){            
-                for (int i = 0; i < chosenCards.size(); i++) {
-                    for (int j = i + 1; j < chosenCards.size(); j++) {
-                        if (playedCard.getRank < Rank.JACK) {
-                            if (chosenCards[i].getRank() + chosenCards[j].getRank() == playedCard.getRank()) {
-                                
-                            }
-                        }
-                    }
-                }    
-            }
-        }
-           */
-               
-            // Conditions on human move
- //       if(legalMove(game.getHumanHand().getCard(playerCard), int[] tableCards, game.getTable())){
-  //      }
-   //     else
-    //      game.getHumanPlayer().getHand().removeCard(card);
-     //     game.getTable().add(card);
-        
-
-        /*
-        
+/*
         // If Computer has cards, computer plays,
         if(game.getComputerPlayer().getHand().numberOfCards()>0){
        //     computerPlayCard(game);
@@ -206,7 +227,7 @@ public class Logic {
      
     public static void checkWinCondition(Player player){
         if(player.getPoints() >= 40){
-            game.endGame(player);
+            //game.endGame(player);
         }
     }
     

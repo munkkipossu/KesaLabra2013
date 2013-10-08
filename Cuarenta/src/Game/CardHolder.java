@@ -23,7 +23,6 @@ public class CardHolder {
 
     public Card getCard(int i){
         return this.cards.get(i);
-        
     }
     
     public void addCard(Card card) {

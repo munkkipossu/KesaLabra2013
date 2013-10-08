@@ -42,19 +42,14 @@ public class PlayerListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         try {
-            if(this.handPanel.getChosenCard()!=null){
-                System.out.println(this.handPanel.getChosenCard());
-                Game.Logic.humanMove(this.game, this.handPanel.getChosenCard(), new ArrayList<Card>());
+                Game.Logic.humanMove(this.game, this.handPanel.getChosenCard(), tablePanel.getChosenCards());
                 this.handPanel.getChosenCard().setBorder(BorderFactory.createEmptyBorder());
-             }
         }
         catch (Exception e) {
-            System.out.println("No card chosen.");
+            System.out.println("Playing the move caused an error: " + tablePanel.getChosenCards().size() + " cards chosen");
         }
-
-        
+                        
         handPanel.drawHand();
         tablePanel.drawTable();
-        
     }
 }

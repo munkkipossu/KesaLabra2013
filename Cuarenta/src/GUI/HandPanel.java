@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -41,21 +41,13 @@ public class HandPanel extends JPanel {
     
     public void drawHand(){
         
-        try{
-            for(int i=0; i<7; i++){
-                this.remove(0);
-            }
-        }
-        catch(Exception e){
-                        System.out.println("can't remove cards from dah hand");
-        }
+        this.removeAll();
         
         try{
             for(int i=0;i<this.hand.numberOfCards();i++){
                 this.cardsShown[i] = this.hand.getCard(i);
                 this.cardsShown[i].addMouseListener(this.cardListener);
                 this.add(cardsShown[i]);
-                this.cardsShown[i].setBorder(BorderFactory.createEmptyBorder());
              }
                 
             for(int i=this.hand.numberOfCards(); i<5;i++){

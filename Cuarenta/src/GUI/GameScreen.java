@@ -39,7 +39,7 @@ public class GameScreen implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Who shall win?");
-        frame.setPreferredSize(new Dimension(600, 600));
+        frame.setPreferredSize(new Dimension(1200, 800));
 
         //frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,11 +58,11 @@ public class GameScreen implements Runnable {
       
         container.add(computerHand, BorderLayout.NORTH);
         container.add(playerHand, BorderLayout.SOUTH);
+
+        container.add(tablePanel, BorderLayout.CENTER);
         
         JPanel options = playButton(game, playerHand, new TablePanel(game));
         container.add(options, BorderLayout.EAST);
-        
-        container.add(tablePanel, BorderLayout.CENTER);
     }
     
     private JPanel playButton(CuarentaGame game, HandPanel hand, TablePanel table){
